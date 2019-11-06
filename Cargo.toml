@@ -10,5 +10,5 @@ edition = "2018"
 serde = { version = "^1.0.102", features = ["derive"] }
 rmp-serde = "^0.14.0"
 serde_json = "^1.0"
-datetime = "^0.4.7"
+chrono = "^0.4"
 serde_repr = "^0.1.5"
