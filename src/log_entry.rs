@@ -8,40 +8,40 @@ use std::fmt::{self, Formatter, Display};
 #[derive(Debug, Serialize, Deserialize)]
 pub struct LogEntry {
 	/// Id of the sender (SHA3-512 of the publick key OR UUID)
-	sid: String,
+	pub sid: String,
 	/// Unix epoch of when the entry was sent (in seconds)
-	sts: i64,
+	pub sts: i64,
 	/// Unix epoch of when the entry was sent (nanoseconds part)
-	stn: u32,
+	pub stn: u32,
 	/// Unix epoch of when the entry was recieved (in seconds)
-	rts: i64,
+	pub rts: i64,
 	/// Unix epoch of when the entry was recieved (nanoseconds part)
-	rtn: u32,
+	pub rtn: u32,
 	/// Log entry level
-	lvl: LogLevel,
+	pub lvl: LogLevel,
 	/// Is this an audit log?
-	iau: bool,
+	pub iau: bool,
 	/// Log entry message
-	msg: String,
+	pub msg: String,
 	/// Extra information
-	dat: Map<String, JSONValue>,
+	pub dat: Map<String, JSONValue>,
 }
 
 impl Default for LogEntry {
-    fn default() -> LogEntry {
-        let ans = LogEntry{
-        	sid: "00000000-0000-0000-0000-000000000000".to_string(),
-        	sts: 0,
-        	stn: 0,
-        	rts: 0,
-        	rtn: 0,
-        	lvl: LogLevel::Info,
-        	iau: false,
-        	msg: "".to_string(),
-        	dat: Map::new(),
-        };
-        ans
-    }
+	fn default() -> LogEntry {
+		let ans = LogEntry{
+			sid: "00000000-0000-0000-0000-000000000000".to_string(),
+			sts: 0,
+			stn: 0,
+			rts: 0,
+			rtn: 0,
+			lvl: LogLevel::Info,
+			iau: false,
+			msg: "".to_string(),
+			dat: Map::new(),
+		};
+		ans
+	}
 }
 
 impl LogEntry {
@@ -75,8 +75,8 @@ impl LogEntry {
 
 impl Display for LogEntry {
 	fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
-        write!(f, "{}", self.to_str())
-    }
+		write!(f, "{}", self.to_str())
+	}
 }
 
 mod tests {
@@ -86,7 +86,7 @@ mod tests {
 	fn test_to_str() {
 		let mut e = LogEntry::default();
 		e.sid = "SENDER_ID".to_string();
-	    assert_eq!(e.to_str(), "\u{1b}[0;34m1970-01-01 00:00:00.000000000 SENDER_ID INFO    ▶  ◆ {}\u{1b}[0m");
-	    assert_eq!(format!("{}", e), "\u{1b}[0;34m1970-01-01 00:00:00.000000000 SENDER_ID INFO    ▶  ◆ {}\u{1b}[0m");
+		assert_eq!(e.to_str(), "\u{1b}[0;34m1970-01-01 00:00:00.000000000 SENDER_ID INFO    ▶  ◆ {}\u{1b}[0m");
+		assert_eq!(format!("{}", e), "\u{1b}[0;34m1970-01-01 00:00:00.000000000 SENDER_ID INFO    ▶  ◆ {}\u{1b}[0m");
 	}
 }

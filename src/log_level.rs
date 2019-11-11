@@ -3,13 +3,13 @@ use serde_repr::*;
 #[derive(Serialize_repr, Deserialize_repr, PartialEq, Debug, Clone, Copy)]
 #[repr(u8)]
 pub enum LogLevel {
-    Fatal   = 1,
-    Error   = 2,
-    Warning = 4,
-    Notice  = 8,
-    Info    = 16,
-    Debug   = 32,
-    Trace   = 64,
+	Fatal   = 1,
+	Error   = 2,
+	Warning = 4,
+	Notice  = 8,
+	Info    = 16,
+	Debug   = 32,
+	Trace   = 64,
 }
 
 pub fn log_levels_to_bitmask(lvls: &[LogLevel]) -> u8 {
@@ -21,9 +21,9 @@ pub fn log_levels_to_bitmask(lvls: &[LogLevel]) -> u8 {
 }
 
 impl Default for LogLevel {
-    fn default() -> LogLevel {
-        LogLevel::Debug
-    }
+	fn default() -> LogLevel {
+		LogLevel::Debug
+	}
 }
 
 impl LogLevel {
