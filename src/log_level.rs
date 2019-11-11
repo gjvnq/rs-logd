@@ -52,6 +52,7 @@ impl LogLevel {
 }
 
 mod tests {
+	#[allow(unused_imports)]
 	use super::*;
 	#[test]
 	fn test_log_levels_to_bitmask() {

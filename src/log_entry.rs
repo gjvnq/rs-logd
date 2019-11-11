@@ -1,4 +1,4 @@
-use crate::LogLevel::LogLevel;
+use crate::log_level::*;
 use chrono::NaiveDateTime;
 use serde_json::Value as JSONValue;
 use serde::{Serialize, Deserialize};
@@ -80,6 +80,7 @@ impl Display for LogEntry {
 }
 
 mod tests {
+	#[allow(unused_imports)]
 	use super::*;
 	#[test]
 	fn test_to_str() {
